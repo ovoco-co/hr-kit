@@ -1,0 +1,23 @@
+{
+  "name": "@ovoco/hr-kit",
+  "version": "0.0.1",
+  "description": "Open-source starter kit for recruiting and HR data with schema, example data, and ATS adapters",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovoco-co/hr-kit.git"
+  },
+  "keywords": [
+    "hr",
+    "recruiting",
+    "ats",
+    "hireology",
+    "starter-kit"
+  ],
+  "scripts": {
+    "validate": "node tools/validate.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
