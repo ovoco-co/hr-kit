@@ -76,3 +76,18 @@ Options considered:
 Janel picked Option C. The reasoning: clean separation honors Platform-Agnostic Design by not baking any single ATS's combined stage-and-status vocabulary into Core. It makes "where is the candidate in the pipeline?" and "did they get hired?" separate, legible questions. And it keeps the Stage lookup stable as recruiting firms adjust their pipelines.
 
 What to tell us: does your pipeline in Hireology mix terminal outcomes with pipeline stages (for example, is "Rejected" or "Placed" one of the stages you move candidates to, not a separate field)? If yes, Option A matches how you actually think about it day to day. If your practice rarely reports on rejected or withdrawn candidates and the only outcomes that matter are "did the placement happen or not," Option D is simpler because it avoids carrying an outcome field that's almost always empty or "Active." If you want explicit status tracking with a clear separation between pipeline and outcome, C is right.
+
+### Keystone Recruiting example-data scope (provisional answer: B)
+
+The schema ships with example data under the fictional firm Keystone Recruiting. The constitution says that data must tell a coherent end-to-end candidate journey and must not use placeholders. The question is how much data. A starter kit that ships with only one client and five candidates teaches almost nothing about how the schema handles variety. One that ships with fifty clients and a thousand candidates becomes its own maintenance problem.
+
+Options considered:
+
+- Option A: Minimal. One client, one requisition, about five candidates, just enough to show one Placed and one non-Placed outcome.
+- Option B: Small realistic. Three to five clients, five to six requisitions, fifteen to twenty candidates. Every Stage lookup value exercised at least once. Every Application outcome value exercised at least once.
+- Option C: Mid-size realistic. Five or more clients, ten requisitions, thirty to fifty candidates. Includes re-applications and terminated placements.
+- Option D: No fixed size. Dataset must only satisfy the constitution's "tells a coherent story" rule and exercise every lookup. Exact shape decided later during planning.
+
+Janel picked Option B. The reasoning: small realistic is the sweet spot for a starter kit. Big enough to show variety across clients, outcomes, and stage paths, and to exercise every lookup value so nothing in the schema is unused. Small enough that a new reader can read the whole dataset cover to cover in one sitting and understand the schema by example. Option A is too thin to teach the schema's value, Option C turns the example data into its own workload, and Option D leaves the Hireology adapter spec shopping for fixtures when it arrives.
+
+What to tell us: if you think twenty candidates is still too few to represent what a real week of recruiting looks like, Option C is the step up. If you want the starter kit to feel as lightweight as possible and you trust the next reader to extend the data themselves, Option A is fine. If you have specific scenarios (an internal transfer, a re-application six months later, a placement that got terminated in its first week) you want the example data to cover, name them and we will fold them into whichever size we land on.
