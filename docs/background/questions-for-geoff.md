@@ -47,6 +47,21 @@ How do you want to be involved? Consumer of the repo, occasional reviewer, commi
 
 As the Core HR schema spec goes through `/speckit-clarify`, questions come up that need an answer to keep drafting. When we do not yet have your input, Janel picks a provisional answer. These choices are not locked. If any of them miss how your practice actually works, we change them before the schema is implemented. Raise any you would do differently.
 
+### Candidate identity and deduplication (provisional answer: D)
+
+A Candidate record has to support multiple Applications across multiple Job Requisitions without duplication. A re-application after rejection cannot create a second Candidate. The question is which attribute or combination of attributes the schema treats as a candidate's canonical natural key, so the adapter knows when "is this person already in our ATS?" should return yes.
+
+Options considered:
+
+- Option A: Email address alone is the unique natural key, compared case-insensitively.
+- Option B: Full name plus primary phone number is the unique natural key.
+- Option C: A kit-assigned `candidateId` is the only identity. No natural-key rule in Core. Each adapter decides.
+- Option D: Email is the primary natural key. When email is missing, full name plus phone acts as fallback.
+
+Janel picked Option D. The reasoning: email is the industry-standard candidate identity and matches the "minimal up-front data" edge case, because a recruiter often has only name and email at first contact. But recruiters also meet candidates who do not give an email (walk-ins, referrals from a contact who shared a phone number). A documented fallback prevents the Hireology adapter from having to invent its own rule and keeps behavior consistent across future adapters.
+
+What to tell us: in your practice, how often do you work with a candidate where no email is on file at first contact? If it is routine, Option D reflects reality. If you never record a candidate without an email, Option A is simpler. If your sourcing is heavily LinkedIn-driven where the same person can appear under several email addresses over the years, the natural key should probably include a persistent external identifier too; tell us which identifier you rely on. If you want to sidestep the whole question and trust adapter-specific rules, Option C is the escape hatch.
+
 ### Stage history representation (provisional answer: A)
 
 The schema needs to represent application stage transitions as history, not just as a current-state field, so the candidate's journey is reconstructable. The question is the structural shape of that history.
