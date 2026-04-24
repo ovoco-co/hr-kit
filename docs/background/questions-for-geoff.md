@@ -61,3 +61,18 @@ Options considered:
 Janel picked Option A. The reasoning: it matches the candidate-journey-centric principle (history belongs to the journey, not a free-floating event log), keeps Core small for a starter kit, reads cleanly on a single Application record, and maps well to how most ATS APIs expose stage history as a nested collection under the application.
 
 What to tell us: do you normally need to see when a candidate EXITED a stage, or who moved them? If yes, Option D is better. Do you report on stage transitions across applications (for example, "average time from Applied to Interview across all candidates this quarter")? If yes, a separate StageTransition type (Option B) makes those queries faster, at the cost of a busier schema. If stage history is something your practice barely uses, Option C is fine and keeps Core smallest.
+
+### Stage, Outcome, and Placement relationship (provisional answer: C)
+
+The schema has to answer two different questions about an Application: "where is the candidate in the pipeline?" and "what was the final outcome?" These are related but not the same. A candidate at the Interview stage is in-pipeline and has no terminal outcome yet. A placed candidate has a terminal outcome (Placed) and also implicitly left the pipeline. Some ATS platforms collapse both into a single stage list (Sourced, Screened, Interviewing, Placed, Rejected). Some separate them.
+
+Options considered:
+
+- Option A: Stage includes terminal states (Placed, Rejected, Withdrawn). No separate outcome field. A Placement record exists if and only if `currentStage = Placed`.
+- Option B: Stage includes terminal states AND Application has a redundant `outcome` field for explicitness.
+- Option C: Stage is pipeline position only (Sourced, Screened, Interviewing, Offer). Application has a separate `outcome` lookup (Active, Placed, Rejected, Withdrawn, Expired). A Placement record exists if and only if `outcome = Placed`.
+- Option D: Stage is pipeline position only. Outcome is inferred from whether a Placement record references the Application. No outcome field on Application itself.
+
+Janel picked Option C. The reasoning: clean separation honors Platform-Agnostic Design by not baking any single ATS's combined stage-and-status vocabulary into Core. It makes "where is the candidate in the pipeline?" and "did they get hired?" separate, legible questions. And it keeps the Stage lookup stable as recruiting firms adjust their pipelines.
+
+What to tell us: does your pipeline in Hireology mix terminal outcomes with pipeline stages (for example, is "Rejected" or "Placed" one of the stages you move candidates to, not a separate field)? If yes, Option A matches how you actually think about it day to day. If your practice rarely reports on rejected or withdrawn candidates and the only outcomes that matter are "did the placement happen or not," Option D is simpler because it avoids carrying an outcome field that's almost always empty or "Active." If you want explicit status tracking with a clear separation between pipeline and outcome, C is right.
