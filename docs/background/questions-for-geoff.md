@@ -42,3 +42,22 @@ After Core HR schema and the Hireology adapter are done, which domain do you wan
 ## Involvement
 
 How do you want to be involved? Consumer of the repo, occasional reviewer, committer and co-maintainer? Any of those is fine. The answer affects how we set up GitHub permissions and how we route code review.
+
+## Provisional choices made during spec drafting
+
+As the Core HR schema spec goes through `/speckit-clarify`, questions come up that need an answer to keep drafting. When we do not yet have your input, Janel picks a provisional answer. These choices are not locked. If any of them miss how your practice actually works, we change them before the schema is implemented. Raise any you would do differently.
+
+### Stage history representation (provisional answer: A)
+
+The schema needs to represent application stage transitions as history, not just as a current-state field, so the candidate's journey is reconstructable. The question is the structural shape of that history.
+
+Options considered:
+
+- Option A: Application carries both `currentStage` (a reference) and an inline `stageHistory` array where each entry has `stage` and `enteredAt`.
+- Option B: A separate top-level StageTransition type referencing Application, from-stage, to-stage, and transition time. Application carries only `currentStage`.
+- Option C: Application carries only `currentStage`. Transition history is out of Core and belongs to a future domain such as audit or compliance.
+- Option D: Like A, but each entry also carries `exitedAt` and `actor` (who moved the candidate).
+
+Janel picked Option A. The reasoning: it matches the candidate-journey-centric principle (history belongs to the journey, not a free-floating event log), keeps Core small for a starter kit, reads cleanly on a single Application record, and maps well to how most ATS APIs expose stage history as a nested collection under the application.
+
+What to tell us: do you normally need to see when a candidate EXITED a stage, or who moved them? If yes, Option D is better. Do you report on stage transitions across applications (for example, "average time from Applied to Interview across all candidates this quarter")? If yes, a separate StageTransition type (Option B) makes those queries faster, at the cost of a busier schema. If stage history is something your practice barely uses, Option C is fine and keeps Core smallest.
