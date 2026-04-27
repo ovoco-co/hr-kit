@@ -8,6 +8,8 @@ None of these are blocking the high-level direction. They all refine scope withi
 
 What industry or vertical do you recruit in most? Technology, healthcare, construction, finance, mixed? The answer shapes what Keystone Recruiting's example data looks like. If you recruit software engineers, example job requisitions reference stack and seniority. If you recruit nurses, they reference licensure and shift preferences. The schema stays the same; the stories the example data tells change.
 
+To make this easier to answer, we drafted a one-paragraph sketch for each industry option in `keystone-industry-sampler.md` (in this folder). Read whichever sketches feel close to your real practice and tell us which one is closest, or name an industry not on the list and we will write a sketch for it.
+
 Do you work contingent, retained, executive search, or a mix? Each model stresses different parts of the schema. Contingent placements care about speed and commission structure. Retained search cares about research, longlists, and client milestones. Executive search cares about candidate confidentiality and client relationships.
 
 How many clients do you typically run at once? How many open requisitions? The answer tells us whether Core needs to scale to a large Keystone example or stay small and illustrative.
