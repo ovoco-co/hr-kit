@@ -2,10 +2,9 @@
 // Pure data: no functions, no imports, no rule logic.
 // Per FR-003 of specs/002-schema-validator-integration/spec.md.
 //
-// LOAD_PRIORITY, NESTED_TYPES, and ATTR_NAME_MAP are stubs at v0.1.0 of this
-// integration. They populate as 001-core-hr-schema's content lands. The
-// validator will flag the empty LOAD_PRIORITY against any non-empty
-// schema-structure.json (per FR-011).
+// LOAD_PRIORITY lists every importable Core type in dependency order:
+// referenced types appear before types that reference them. Per FR-012 of
+// specs/001-core-hr-schema/spec.md and Constitution III.
 //
 // To verify hr-kit holds no rule logic outside this file (per SC-005, FR-009):
 //   grep -rnE '\^\[a-z\]\[a-zA-Z|\^\[A-Z\]\[a-zA-Z|attribute\.casing|data\.reference\.unresolved' \
@@ -14,7 +13,26 @@
 // Expected: zero matches outside this file (and zero matches inside this file
 // once the patterns are not embedded in this comment block).
 
-const LOAD_PRIORITY = [];
+const LOAD_PRIORITY = [
+  // Lookups first (no internal dependencies)
+  'Source Channel',
+  'Employment Type',
+  'Application Outcome',
+  'Requisition Status',
+  'Placement Status',
+  // Stage (referenced by Application; no internal dependencies)
+  'Stage',
+  // Client (referenced by Job Requisition and Placement)
+  'Client',
+  // Job Requisition (references Client, Employment Type, Requisition Status)
+  'Job Requisition',
+  // Candidate (references Source Channel)
+  'Candidate',
+  // Application (references Candidate, Job Requisition, Stage, Source Channel, Application Outcome)
+  'Application',
+  // Placement (references Candidate, Job Requisition, Client, Application, Placement Status)
+  'Placement',
+];
 
 const NESTED_TYPES = [];
 

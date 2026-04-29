@@ -1,0 +1,63 @@
+{
+  "Source Channel": {
+    "description": { "type": 0 }
+  },
+  "Employment Type": {
+    "description": { "type": 0 }
+  },
+  "Application Outcome": {
+    "description": { "type": 0 }
+  },
+  "Requisition Status": {
+    "description": { "type": 0 }
+  },
+  "Placement Status": {
+    "description": { "type": 0 }
+  },
+  "Stage": {
+    "description": { "type": 0 },
+    "ordinal": { "type": 0, "defaultTypeId": 1 }
+  },
+  "Client": {
+    "primaryContact": { "type": 0 },
+    "primaryContactEmail": { "type": 0 },
+    "location": { "type": 0 },
+    "description": { "type": 0 }
+  },
+  "Job Requisition": {
+    "client": { "type": 1, "referenceType": "Client" },
+    "title": { "type": 0 },
+    "level": { "type": 0 },
+    "employmentType": { "type": 1, "referenceType": "Employment Type" },
+    "requisitionStatus": { "type": 1, "referenceType": "Requisition Status" },
+    "openedDate": { "type": 0, "defaultTypeId": 4 },
+    "closedDate": { "type": 0, "defaultTypeId": 4 },
+    "description": { "type": 0 }
+  },
+  "Candidate": {
+    "email": { "type": 0 },
+    "primaryPhone": { "type": 0 },
+    "sourceChannel": { "type": 1, "referenceType": "Source Channel" },
+    "sourceDate": { "type": 0, "defaultTypeId": 4 },
+    "description": { "type": 0 }
+  },
+  "Application": {
+    "candidate": { "type": 1, "referenceType": "Candidate" },
+    "jobRequisition": { "type": 1, "referenceType": "Job Requisition" },
+    "currentStage": { "type": 1, "referenceType": "Stage" },
+    "stageHistory": { "type": 2 },
+    "applicationDate": { "type": 0, "defaultTypeId": 4 },
+    "source": { "type": 1, "referenceType": "Source Channel" },
+    "outcome": { "type": 1, "referenceType": "Application Outcome" },
+    "decisionDate": { "type": 0, "defaultTypeId": 4 }
+  },
+  "Placement": {
+    "candidate": { "type": 1, "referenceType": "Candidate" },
+    "jobRequisition": { "type": 1, "referenceType": "Job Requisition" },
+    "client": { "type": 1, "referenceType": "Client" },
+    "application": { "type": 1, "referenceType": "Application" },
+    "startDate": { "type": 0, "defaultTypeId": 4 },
+    "placementStatus": { "type": 1, "referenceType": "Placement Status" },
+    "endDate": { "type": 0, "defaultTypeId": 4 }
+  }
+}

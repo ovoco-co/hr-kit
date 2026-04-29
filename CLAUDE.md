@@ -38,8 +38,12 @@ Shared constitution lives at `../.specify-projects/hr-kit/memory/constitution.md
 - Commit schema changes separately from data changes
 
 ## Active Technologies
-- Node.js 18+ (matches existing `package.json` engines field, matches kit-validator) + `@ovoco/kit-validator` consumed via git URL pinned to `git+https://github.com/ovoco-co/kit-validator.git#v0.1.0`. No other dependencies introduced by this feature. (002-schema-validator-integration)
-- Local filesystem only. The validator reads `schema/core/` and `schema/domains/<domain>/` directories at validation time. No databases, no network calls at run time. (002-schema-validator-integration)
+
+- Node.js 18+ runtime; consumes `@ovoco/kit-validator` via git URL pinned to `git+https://github.com/ovoco-co/kit-validator.git#v0.1.0`. (002-schema-validator-integration)
+- JSON for schema and data files. Schema definitions live in `schema/core/schema-structure.json` and `schema/core/schema-attributes.json`; data records live in `schema/core/data/<kebab-case-type-name>.json`. (001-core-hr-schema)
+- Local filesystem only. No databases, no network calls at validation run time.
 
 ## Recent Changes
-- 002-schema-validator-integration: Added Node.js 18+ (matches existing `package.json` engines field, matches kit-validator) + `@ovoco/kit-validator` consumed via git URL pinned to `git+https://github.com/ovoco-co/kit-validator.git#v0.1.0`. No other dependencies introduced by this feature.
+
+- 001-core-hr-schema: added JSON schema-structure and schema-attributes files plus per-type data files for the six entities and five lookup types making up Core.
+- 002-schema-validator-integration: added the thin `tools/validate.js` entry point and `tools/lib/constants.js` constants module consuming `@ovoco/kit-validator`.

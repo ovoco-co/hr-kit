@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Active",
+    "description": "The candidate is mid-pipeline; no terminal outcome has been set yet. Default value while an Application is in progress."
+  },
+  {
+    "Name": "Placed",
+    "description": "The candidate accepted an offer and the requisition is filled by them. Requires a corresponding Placement record."
+  },
+  {
+    "Name": "Rejected",
+    "description": "The candidate was disqualified or declined by the client at some stage of the pipeline."
+  },
+  {
+    "Name": "Withdrawn",
+    "description": "The candidate withdrew themselves from consideration before placement (counter-offer, change of mind, took a different role)."
+  },
+  {
+    "Name": "Expired",
+    "description": "The Application reached a terminal state without a placement decision because the requisition was closed or cancelled."
+  }
+]

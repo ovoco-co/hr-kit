@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Open",
+    "description": "The requisition is actively being filled. Recruiters are sourcing and interviewing candidates."
+  },
+  {
+    "Name": "On Hold",
+    "description": "Sourcing is paused at the client's request, but the requisition has not been cancelled or filled."
+  },
+  {
+    "Name": "Closed",
+    "description": "The requisition has been closed by the client without a placement and without being explicitly cancelled."
+  },
+  {
+    "Name": "Filled",
+    "description": "The requisition was filled, either by a Keystone-placed candidate (with a corresponding Placement) or by the client through another channel."
+  },
+  {
+    "Name": "Cancelled",
+    "description": "The requisition was withdrawn by the client before any placement was made."
+  }
+]

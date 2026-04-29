@@ -1,0 +1,10 @@
+[
+  {
+    "Name": "Active",
+    "description": "The placed candidate is currently working at the client. Default value when a Placement is created."
+  },
+  {
+    "Name": "Ended",
+    "description": "The placement has concluded (the candidate left the role, was terminated, or the contract reached its end). The Placement carries an endDate."
+  }
+]

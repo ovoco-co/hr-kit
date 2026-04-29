@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Full-Time",
+    "description": "Permanent full-time employment with the client."
+  },
+  {
+    "Name": "Contract",
+    "description": "Fixed-duration contract engagement; not an offer of permanent employment."
+  },
+  {
+    "Name": "Contract-to-Hire",
+    "description": "Initial contract engagement intended to convert to permanent employment after a defined period."
+  },
+  {
+    "Name": "Part-Time",
+    "description": "Permanent employment at less than full-time hours."
+  },
+  {
+    "Name": "Per-Diem",
+    "description": "Day-rate engagement, typically used for healthcare and trades. No guaranteed hours."
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Source Channel",
+    "description": "How a candidate was discovered or contacted (e.g., LinkedIn Recruiter, Referral, Walk-In)."
+  },
+  {
+    "name": "Employment Type",
+    "description": "How the candidate is engaged when hired (full-time, contract, contract-to-hire, part-time, per-diem)."
+  },
+  {
+    "name": "Application Outcome",
+    "description": "The terminal outcome of an Application: Active, Placed, Rejected, Withdrawn, or Expired."
+  },
+  {
+    "name": "Requisition Status",
+    "description": "Lifecycle state of a Job Requisition: Open, On Hold, Closed, Filled, or Cancelled."
+  },
+  {
+    "name": "Placement Status",
+    "description": "Lifecycle state of a Placement: Active or Ended."
+  },
+  {
+    "name": "Stage",
+    "description": "A pipeline position the candidate moves through (Sourced, Screened, Interviewing, Offer). Pipeline-only; terminal outcomes live on Application.outcome."
+  },
+  {
+    "name": "Client",
+    "description": "The end-organization where a candidate is placed and the owner of one or more Job Requisitions."
+  },
+  {
+    "name": "Job Requisition",
+    "description": "A specific open role at a Client, with title, level, employment type, lifecycle status, and open and close dates."
+  },
+  {
+    "name": "Candidate",
+    "description": "A person being considered for one or more jobs. Identity is keyed on email (case-insensitive) with full name plus primary phone as fallback."
+  },
+  {
+    "name": "Application",
+    "description": "A candidate's participation in a specific requisition. Carries the current pipeline Stage, the inline stage history, the application source, and the terminal outcome."
+  },
+  {
+    "name": "Placement",
+    "description": "The success record. A Candidate has been placed into a Job Requisition at a Client. Exists if and only if the corresponding Application's outcome is Placed."
+  }
+]
