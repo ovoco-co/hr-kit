@@ -36,3 +36,10 @@ Shared constitution lives at `../.specify-projects/hr-kit/memory/constitution.md
 
 - Main branch: main
 - Commit schema changes separately from data changes
+
+## Active Technologies
+- Node.js 18+ (matches existing `package.json` engines field, matches kit-validator) + `@ovoco/kit-validator` consumed via git URL pinned to `git+https://github.com/ovoco-co/kit-validator.git#v0.1.0`. No other dependencies introduced by this feature. (002-schema-validator-integration)
+- Local filesystem only. The validator reads `schema/core/` and `schema/domains/<domain>/` directories at validation time. No databases, no network calls at run time. (002-schema-validator-integration)
+
+## Recent Changes
+- 002-schema-validator-integration: Added Node.js 18+ (matches existing `package.json` engines field, matches kit-validator) + `@ovoco/kit-validator` consumed via git URL pinned to `git+https://github.com/ovoco-co/kit-validator.git#v0.1.0`. No other dependencies introduced by this feature.

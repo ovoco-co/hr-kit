@@ -17,6 +17,9 @@
   "scripts": {
     "validate": "node tools/validate.js"
   },
+  "dependencies": {
+    "@ovoco/kit-validator": "git+https://github.com/ovoco-co/kit-validator.git#v0.1.0"
+  },
   "engines": {
     "node": ">=18"
   }
