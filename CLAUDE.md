@@ -17,6 +17,14 @@ Identical to cmdb-kit. See `../cmdb-kit/CLAUDE.md` for the full pattern. Key dif
 - `../cmdb-kit` for the architectural pattern this kit follows
 - `../migration-kit` for migration tooling patterns
 
+## O*NET Occupation Data
+
+hr-kit's JD bootstrap pipeline (spec 003-jd-bootstrap) consumes O*NET occupation data from the workspace-shared `onet` PostgreSQL schema on VPS `ovoco.co`. The pipeline does NOT call O*NET Web Services directly; it queries the workspace schema via SSH tunnel.
+
+Workspace spec defining the schema, refresh policy, and consumer contracts: `../specs/011-onet-occupation-data/`. See `consumer-contracts.md` in that directory for the canonical SQL query pattern hr-kit uses.
+
+When O*NET publishes a new edition, the workspace refresh runs once on the VPS and all consuming apps (including hr-kit) see the new content on next query. No hr-kit-side action required for within-edition updates.
+
 ## Speckit
 
 Initialized with `specify init --here --ai claude`. Workflow: `/speckit.specify` → `/speckit.clarify` → `/speckit.plan` → `/speckit.tasks` → `/speckit.analyze` → `/speckit.implement`.
