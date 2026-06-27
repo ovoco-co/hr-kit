@@ -6,7 +6,7 @@ This is the HR industry counterpart to [cmdb-kit](https://github.com/ovoco-co/cm
 
 ## Status
 
-Early scaffold. Schema and first adapter are being specified through the speckit workflow. See `specs/` for in-progress features.
+Early scaffold. Schema and first adapter are being specified. See `specs/` for in-progress features.
 
 ## Planned Scope
 
